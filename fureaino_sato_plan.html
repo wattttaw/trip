@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ふれあいの里 旅程 8/8-9</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f4f0; color: #2c2c2a; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+.subtitle { font-size: 14px; color: #888780; margin-bottom: 2rem; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 2rem; }
+.info-card { background: #fff; border: 0.5px solid #d3d1c7; border-radius: 10px; padding: 12px 16px; }
+.info-card-label { font-size: 11px; color: #888780; margin-bottom: 4px; }
+.info-card-value { font-size: 13px; color: #2c2c2a; line-height: 1.6; }
+.day-section { margin-bottom: 2.5rem; }
+.day-badge { display: inline-block; background: #5DCAA5; color: #085041; font-size: 13px; font-weight: 500; padding: 4px 16px; border-radius: 20px; margin-bottom: 14px; }
+.day-badge.day2 { background: #9FE1CB; }
+.timeline { display: flex; flex-direction: column; }
+.t-row { display: grid; grid-template-columns: 72px 16px 1fr; gap: 0 12px; align-items: stretch; }
+.t-time { font-size: 11px; color: #888780; padding-top: 8px; text-align: right; line-height: 1.3; }
+.t-spine { display: flex; flex-direction: column; align-items: center; }
+.t-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 9px; background: #b4b2a9; }
+.t-dot.blue { background: #378ADD; }
+.t-dot.green { background: #1D9E75; }
+.t-dot.orange { background: #D85A30; }
+.t-dot.purple { background: #534AB7; }
+.t-line { flex: 1; width: 2px; background: #d3d1c7; }
+.t-card { background: #fff; border: 0.5px solid #d3d1c7; border-radius: 10px; padding: 8px 13px; margin: 4px 0; }
+.t-card.blue { border-color: #85B7EB; background: #E6F1FB; }
+.t-card.green { border-color: #97C459; background: #EAF3DE; }
+.t-card.orange { border-color: #EF9F27; background: #FAEEDA; }
+.t-card.purple { border-color: #AFA9EC; background: #EEEDFE; }
+.t-card-title { font-size: 13px; font-weight: 500; margin-bottom: 2px; }
+.t-card.blue .t-card-title { color: #185FA5; }
+.t-card.green .t-card-title { color: #3B6D11; }
+.t-card.orange .t-card-title { color: #854F0B; }
+.t-card.purple .t-card-title { color: #3C3489; }
+.t-card-sub { font-size: 11px; color: #5f5e5a; line-height: 1.5; }
+.tag { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 8px; margin-left: 5px; vertical-align: middle; font-weight: 400; }
+.tag-req { background: #FAECE7; color: #993C1D; }
+.tag-done { background: #E1F5EE; color: #085041; }
+.tag-free { background: #E1F5EE; color: #085041; }
+.divider { border: none; border-top: 0.5px solid #d3d1c7; margin: 2rem 0; }
+.checklist { background: #fff; border: 0.5px solid #d3d1c7; border-radius: 10px; padding: 14px 16px; margin-bottom: 2rem; }
+.checklist h2 { font-size: 14px; font-weight: 500; margin-bottom: 10px; }
+.cl-item { display: flex; align-items: baseline; gap: 10px; font-size: 12px; color: #5f5e5a; padding: 5px 0; border-bottom: 0.5px solid #d3d1c7; line-height: 1.5; }
+.cl-item:last-child { border-bottom: none; }
+.cl-badge { font-size: 10px; padding: 1px 7px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; }
+.cl-badge.req { background: #FAECE7; color: #993C1D; }
+.cl-badge.done { background: #E1F5EE; color: #085041; }
+.cl-badge.date { background: #F1EFE8; color: #5f5e5a; }
+.url-section { background: #fff; border: 0.5px solid #d3d1c7; border-radius: 10px; padding: 14px 16px; }
+.url-section h2 { font-size: 14px; font-weight: 500; margin-bottom: 10px; }
+.url-item { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 12px; padding: 5px 0; border-bottom: 0.5px solid #d3d1c7; }
+.url-item:last-child { border-bottom: none; }
+.url-label { color: #5f5e5a; }
+.url-item a { color: #185FA5; text-decoration: none; font-size: 11px; }
+.dinner-section { background: #fff; border: 0.5px solid #d3d1c7; border-radius: 10px; padding: 14px 16px; margin-bottom: 2rem; }
+.dinner-section h2 { font-size: 14px; font-weight: 500; margin-bottom: 10px; }
+.dinner-item { font-size: 12px; color: #5f5e5a; padding: 4px 0; border-bottom: 0.5px solid #d3d1c7; line-height: 1.5; }
+.dinner-item:last-child { border-bottom: none; }
+.dinner-item a { color: #185FA5; text-decoration: none; }
+@media (max-width: 500px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .t-row { grid-template-columns: 60px 14px 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>ふれあいの里キャンプ旅行</h1>
+<p class="subtitle">2026年 8/8（土）〜 8/9（日）／ 家族4名（夫婦・高校生・小学生）</p>
+
+<div class="info-grid">
+  <div class="info-card">
+    <div class="info-card-label">宿泊</div>
+    <div class="info-card-value">キャビン（6人用）<br>CI 10:00〜（アーリー）／ CO 10:00<br>追加料金 ¥1,500/h（3割引済）</div>
+  </div>
+  <div class="info-card">
+    <div class="info-card-label">現地連絡先</div>
+    <div class="info-card-value">ふれあいの里<br>☎ 029-288-5505<br>受付 8:30〜18:00</div>
+  </div>
+  <div class="info-card">
+    <div class="info-card-label">キャンセル無料期限</div>
+    <div class="info-card-value">8/4（火）中まで<br>8/5（水）は休園日で受付不可</div>
+  </div>
+  <div class="info-card">
+    <div class="info-card-label">BBQ食材購入</div>
+    <div class="info-card-value">カスミ フードスクエア水戸赤塚店<br>9:00〜 ／ 水戸IC付近</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="day-section">
+  <div class="day-badge">Day 1　8/8（土）　出発〜ピザ・釣り〜BBQ・天文台</div>
+  <div class="timeline">
+
+    <div class="t-row">
+      <div class="t-time">8:00</div>
+      <div class="t-spine"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-card"><div class="t-card-title">入谷 出発</div><div class="t-card-sub">常磐道経由。土曜渋滞を避けて早めに</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">9:00〜9:30</div>
+      <div class="t-spine"><div class="t-dot green"></div><div class="t-line"></div></div>
+      <div class="t-card green"><div class="t-card-title">BBQ食材購入</div><div class="t-card-sub">カスミ フードスクエア水戸赤塚店（9:00〜）水戸IC付近</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">10:00</div>
+      <div class="t-spine"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-card"><div class="t-card-title">ふれあいの里 到着・アーリーチェックイン<span class="tag tag-req">要事前電話</span></div><div class="t-card-sub">食材を冷蔵庫へ。追加料金 ¥1,500/h</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">11:00</div>
+      <div class="t-spine"><div class="t-dot blue"></div><div class="t-line"></div></div>
+      <div class="t-card blue"><div class="t-card-title">ピザ作り体験<span class="tag tag-req">要事前予約</span></div><div class="t-card-sub">土曜 11:00〜13:30 ／ ¥1,700〜/枚 ／ 3日前以降キャンセル不可</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">12:00</div>
+      <div class="t-spine"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-card"><div class="t-card-title">昼食（作ったピザ）</div><div class="t-card-sub">イベントホールでそのままランチ</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">13:30〜15:30</div>
+      <div class="t-spine"><div class="t-dot blue"></div><div class="t-line"></div></div>
+      <div class="t-card blue"><div class="t-card-title">釣り堀<span class="tag tag-free">予約不要</span></div><div class="t-card-sub">土曜 11:00〜16:00（最終受付15:30）／ 竿・餌 ¥200 ＋ 魚 ¥350/100g ／ 下処理 ¥100</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">16:00〜17:00</div>
+      <div class="t-spine"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-card"><div class="t-card-title">ホロルの湯（任意）</div><div class="t-card-sub">宿泊者割引あり（管理棟で受け取り）</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">17:00〜20:00</div>
+      <div class="t-spine"><div class="t-dot orange"></div><div class="t-line"></div></div>
+      <div class="t-card orange"><div class="t-card-title">夜BBQ（宿泊者専用ガスエリア）</div><div class="t-card-sub">16:00〜21:00 屋根付き ／ 釣った魚もホイル焼きで！22時以降静粛</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">20:30</div>
+      <div class="t-spine"><div class="t-dot purple"></div></div>
+      <div class="t-card purple"><div class="t-card-title">天文台<span class="tag tag-free">予約不要</span></div><div class="t-card-sub">毎週土曜開館 ／ 20:20受付〜21:45 ／ 大人 ¥300・子 ¥200 ／ 曇雨中止（場内放送で確認）</div></div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="day-section">
+  <div class="day-badge day2">Day 2　8/9（日）　モーニング〜カヤック〜帰路</div>
+  <div class="timeline">
+
+    <div class="t-row">
+      <div class="t-time">7:30</div>
+      <div class="t-spine"><div class="t-dot green"></div><div class="t-line"></div></div>
+      <div class="t-card green"><div class="t-card-title">ふれあいモーニング<span class="tag tag-req">前日24:00までにWEB予約</span></div><div class="t-card-sub">7:30〜8:30（LO 8:30）／ セット ¥700・キッズ ¥600 ／ カトラリー持参推奨</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">9:00〜10:00</div>
+      <div class="t-spine"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-card"><div class="t-card-title">片付け・チェックアウト（10:00）</div><div class="t-card-sub">荷物を車に積んでスッキリ</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">10:00〜12:00</div>
+      <div class="t-spine"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-card"><div class="t-card-title">自由時間（釣り堀など）</div><div class="t-card-sub">日曜 9:30〜15:30 ／ カヤックまでの空き時間に</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">12:00〜12:50</div>
+      <div class="t-spine"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-card"><div class="t-card-title">昼食</div><div class="t-card-sub">道の駅かつら（〜15:00）or 場内 ／ カヤック前は軽めに</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">12:50</div>
+      <div class="t-spine"><div class="t-dot blue"></div><div class="t-line"></div></div>
+      <div class="t-card blue"><div class="t-card-title">カヤック受付（ホロルの湯エントランス）</div><div class="t-card-sub">開始10分前に集合 ／ 濡れてもいい服装＋固定できる靴 ／ 現金 or PayPay</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">13:00〜14:50</div>
+      <div class="t-spine"><div class="t-dot blue"></div><div class="t-line"></div></div>
+      <div class="t-card blue"><div class="t-card-title">カヤック体験（藤井川ダム）<span class="tag tag-done">予約済</span></div><div class="t-card-sub">4名 ／ ゆったりカヤック体験【夏期】シングル ¥6,500</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">15:00〜</div>
+      <div class="t-spine"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-card"><div class="t-card-title">帰路へ（常磐道 上り）</div><div class="t-card-sub">友部SA or Pasar守谷で休憩 → 入谷ICで降車 ／ 到着予想 18:00〜20:00頃</div></div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-time">18:00〜</div>
+      <div class="t-spine"><div class="t-dot"></div></div>
+      <div class="t-card"><div class="t-card-title">帰宅後 夕食（入谷・上野エリア）</div><div class="t-card-sub">天ぷら大塚 ／ じゅらく上野 ／ 佐渡島へ渡れ ／ トンマッコル など</div></div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="checklist">
+  <h2>事前にやること（締切順）</h2>
+  <div class="cl-item"><span class="cl-badge done">完了</span>カヤック予約（8/9 13:00〜14:50 ／ 4名）</div>
+  <div class="cl-item"><span class="cl-badge req">急ぎ</span>ピザ体験の予約（7月中に！約1ヶ月前から受付開始）</div>
+  <div class="cl-item"><span class="cl-badge req">急ぎ</span>アーリーチェックイン希望の電話（029-288-5505）</div>
+  <div class="cl-item"><span class="cl-badge date">8/8 24:00</span>モーニングのWEB予約（4名分）</div>
+  <div class="cl-item"><span class="cl-badge date">8/4中に</span>キャンセル無料期限（キャビン・ピザ・カヤック）／ カレンダー登録済み</div>
+  <div class="cl-item"><span class="cl-badge" style="background:#F1EFE8;color:#5f5e5a;">当日</span>天文台は場内放送で開館可否を確認（予約不要・曇雨中止）</div>
+</div>
+
+<div class="dinner-section">
+  <h2>帰宅後の夕食候補（入谷・上野エリア）</h2>
+  <div class="dinner-item">天ぷら 大塚（入谷駅徒歩6分）— <a href="https://tabelog.com/tokyo/A1311/A131104/13223589/">食べログ</a></div>
+  <div class="dinner-item">じゅらく 上野駅前店（上野駅徒歩3分）— <a href="https://www.juraku.com/">公式サイト</a></div>
+  <div class="dinner-item">佐渡島へ渡れ（上野駅徒歩圏）全席個室・海鮮 — <a href="https://www.hotpepper.jp/strJ000869588/">ホットペッパー</a></div>
+  <div class="dinner-item">トンマッコル 上野店（上野広小路駅徒歩1分）韓国家庭料理 — <a href="https://tabelog.com/tokyo/A1311/A131101/13007069/">食べログ</a></div>
+</div>
+
+<div class="url-section">
+  <h2>主な参照URL</h2>
+  <div class="url-item"><span class="url-label">ふれあいの里 公式</span><a href="https://fureai.shirosatocamp.jp/">fureai.shirosatocamp.jp</a></div>
+  <div class="url-item"><span class="url-label">カヤック予約サイト</span><a href="https://8cke8x04dyoje3i9a9ru.stores.jp/reserve/shirosatooutdoors">stores.jp（shirosatooutdoors）</a></div>
+  <div class="url-item"><span class="url-label">カスミ水戸赤塚店</span><a href="https://www.kasumi.co.jp/tenpotop/ibaraki-center/mito/249/">kasumi.co.jp</a></div>
+  <div class="url-item"><span class="url-label">道の駅かつら（昼食候補）</span><a href="https://www.m-katsura.com/">m-katsura.com</a></div>
+  <div class="url-item"><span class="url-label">友部SA 上り</span><a href="https://www.driveplaza.com/sapa/1400/1400071/1/">driveplaza.com</a></div>
+  <div class="url-item"><span class="url-label">Pasar守谷SA 上り</span><a href="https://www.driveplaza.com/sapa/1400/1400016/1/">driveplaza.com</a></div>
+</div>
+
+</div>
+</body>
+</html>
